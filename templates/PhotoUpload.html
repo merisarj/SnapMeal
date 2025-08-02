@@ -2,10 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script src="camera.js"></script>
+    <script src="{{ url_for('static', filename='camera.js') }}"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Webcam Demo</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        #camera {
+            width: 100%;
+            max-width: 500px;
+        }
+        #photo {
+            display: none;
+        }
+    </style>
 </head>
 <body>
 <h1>Access Camera and Capture Photo</h1>
