@@ -37,11 +37,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const formData = new FormData();
         formData.append('file', blob, 'captured-image.jpg');
 
-        fetch('https://serverless.roboflow.com/', {
+        fetch('/Upload-Image', {
             method: 'POST',
-            headers: {
-                'authorization': 'Bearer VAgnpwg4Tu8FtmRfcnRu'
-            },
             body: formData
         })
             .then(response => response.json())
