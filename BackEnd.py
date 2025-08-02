@@ -4,7 +4,7 @@ import os
 
 app = Flask(__name__)
 
-UPLOAD_FOLDER = 'uploads'
+UPLOAD_FOLDER = os.path.join('static', 'uploads')
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 @app.route('/')
 def home():
@@ -25,6 +25,10 @@ def upload_image():
     file.save(filepath)
 
     return jsonify({'message': 'Image received', 'filename': filename})
+
+@app.route('/Results')
+def results():
+    return render_template('Results.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
