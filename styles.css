@@ -6,3 +6,8 @@
 #photo {
     display: none;
 }
+
+#div {
+    align-self: center;
+    align-content: flex-start;
+}
