@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
         })
 
     const captureBtn = document.getElementById('capture-btn');
+    const confirmBtn = document.getElementById('confirm-btn');
     const canvas = document.getElementById('photo');
     const context = canvas.getContext('2d');
 
@@ -18,8 +19,11 @@ document.addEventListener("DOMContentLoaded", () => {
         canvas.height = video.videoHeight;
 
         context.drawImage(video, 0, 0, canvas.width, canvas.height);
+    });
 
+    confirmBtn.addEventListener('click', () => {
         const dataURL = canvas.toDataURL('image/jpeg', 0.9);
+
         function dataURLBlob(dataUrl) {
             const arr = dataUrl.split(',');
             const mime = arr[0].match(/:(.*?);/)[1];
@@ -36,7 +40,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const formData = new FormData();
         formData.append('file', blob, 'captured-image.jpg');
-
         fetch('/Upload-Image', {
             method: 'POST',
             body: formData
@@ -49,13 +52,14 @@ document.addEventListener("DOMContentLoaded", () => {
             .catch(error => {
                 console.error('Error sending image to AI API', error);
             })
-
-        const dowloadLink = document.createElement('a');
-        dowloadLink.href = dataURL;
-        dowloadLink.download = 'captured-photo.png';
-        dowloadLink.style.display = 'block';
-        dowloadLink.click();
-    });
+    })
+    /*
+    const dowloadLink = document.createElement('a');
+    dowloadLink.href = dataURL;
+    dowloadLink.download = 'captured-photo.png';
+    dowloadLink.style.display = 'block';
+    dowloadLink.click();
+     */
 })
 
 
