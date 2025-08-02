@@ -16,11 +16,16 @@
     </style>
 </head>
 <body>
-<h1>Access Camera and Capture Photo</h1>
+<h1>Access Camera & Capture Photo</h1>
 
-<video id="camera" autoplay></video>
-<button id="capture-btn">Capture Photo</button>
+  <div class="camera-wrapper">
+    <video id="camera" autoplay playsinline></video>
+    <canvas id="photo"></canvas>
+  </div>
 
-<canvas id="photo"></canvas>
+  <div class="controls">
+    <button id="capture-btn">📸 Capture</button>
+    <button id="download-btn">⬇️ Download</button>
+  </div>
 </body>
 </html>

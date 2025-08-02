@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error("Error with camera", error);
         })
 
-    const captureBtn = document.getElementById('capture-btn');
+    const captureBtn = document.getElementById('download-btn');
     const canvas = document.getElementById('photo');
     const context = canvas.getContext('2d');
 
