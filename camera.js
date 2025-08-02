@@ -26,6 +26,7 @@ captureBtn.addEventListener('click', () => {
     dowloadLink.href = dataURL;
     dowloadLink.download = 'captured-photo.png';
     dowloadLink.style.display = 'block';
+    dowloadLink.click();
 });
 
 
