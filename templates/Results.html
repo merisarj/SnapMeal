@@ -2,15 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <title>Food Results</title>
 </head>
 <body>
 <div>
-    <img src="{{ url_for('static', filename='uploads/captured-image.jpg') }}">
-    <h1>Calories: </h1>
-    <h1>Protein contents: </h1>
-
+    <img src="{{ url_for('static', filename='uploads/garliccloveoncounter13_jpeg_jpg.rf.37c4b653f4d37042979110a5326f8827.jpg') }}">
+    {% for item in data %}
+    <h1>Name: {{ item.name }}</h1>
+    <h1>Calories: {{ item.calories }}</h1>
+    <h1>Fat: {{ item.fat }}</h1>
+    <h1>Carbs: {{ item.carbs }}</h1>
+    <h1>Protein: {{ item.protein }}</h1>
+    <hr>
+    {% endfor %}
 </div>
 </body>
 </html>

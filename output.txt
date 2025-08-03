@@ -1,0 +1,6 @@
+Food: Garlic
+  Calories: 149.0 kcal
+  Fat: 0.5 g
+  Carbs: 33.06 g
+  Protein: 6.36 g
+--------------------------
