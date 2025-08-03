@@ -44,7 +44,7 @@
    justify-content: center;
  }
 
- button {
+ button, #fileInput {
    padding: 10px 18px;
    font-size: 15px;
    border: none;
@@ -58,3 +58,7 @@
  button:hover {
    background-color: #0056b3;
  }
+
+#fileInput::file-selector-button {
+  display: none;
+}
