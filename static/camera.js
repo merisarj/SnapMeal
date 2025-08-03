@@ -22,35 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     confirmBtn.addEventListener('click', () => {
-        const dataURL = canvas.toDataURL('image/jpeg', 0.9);
 
-        function dataURLBlob(dataUrl) {
-            const arr = dataUrl.split(',');
-            const mime = arr[0].match(/:(.*?);/)[1];
-            const bstr = atob(arr[1]);
-            let n = bstr.length;
-            const u8arr = new Uint8Array(n);
-            while (n--) {
-                u8arr[n] = bstr.charCodeAt(n);
-            }
-            return new Blob([u8arr], {type: mime});
-        }
-
-        const blob = dataURLBlob(dataURL);
-
-        const formData = new FormData();
-        formData.append('file', blob, 'captured-image.jpg');
-        fetch('/Upload-Image', {
-            method: 'POST',
-            body: formData
-        })
-            .then(response => response.json())
-            .then(result => {                console.log('AI API Response:', result);
-                document.getElementById("result").textContent = result.output || JSON.stringify(result);
-            })
-            .catch(error => {
-                console.error('Error sending image to AI API', error);
-            })
 
     })
     /*
