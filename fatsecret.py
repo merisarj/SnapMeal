@@ -12,14 +12,13 @@ CLIENT = InferenceHTTPClient(
     api_key="SOS2WPF4re41QmdVH2gt"
 )
 
-custom_config = InferenceConfiguration(confidence_threshold=0.1, iou_threshold=0.3)
+custom_config = InferenceConfiguration(confidence_threshold=0.01, iou_threshold=0.3)
 
 with CLIENT.use_configuration(custom_config):
     your_image = Image.open("static/uploads/captured-image.jpg")
     result = CLIENT.infer(your_image, model_id="food-bxkvw/3")
 
 labels = [prediction["class"] for prediction in result["predictions"]]
-
 
 # In[17]:
 
@@ -119,7 +118,7 @@ for food in foods:
     )
 
     # Append to the text file
-    with open('output.txt', 'a') as f:
+    with open('output.txt', 'w') as f:
         f.write(text_entry)
 
     # Optional: print output

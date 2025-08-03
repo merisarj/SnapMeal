@@ -1,6 +1,6 @@
-Food: Garlic
-  Calories: 149.0 kcal
-  Fat: 0.5 g
-  Carbs: 33.06 g
-  Protein: 6.36 g
+Food: Bananas
+  Calories: 89.0 kcal
+  Fat: 0.33 g
+  Carbs: 22.84 g
+  Protein: 1.09 g
 --------------------------

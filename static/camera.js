@@ -19,9 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
         canvas.height = video.videoHeight;
 
         context.drawImage(video, 0, 0, canvas.width, canvas.height);
-    });
-
-    confirmBtn.addEventListener('click', () => {
         const dataURL = canvas.toDataURL('image/jpeg', 0.9);
 
         function dataURLBlob(dataUrl) {
@@ -52,6 +49,24 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.error('Error sending image to AI API', error);
             })
 
+    });
+
+    confirmBtn.addEventListener('click', () => {
+          fetch('/Results', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ confirm: true }) // send any needed data
+    })
+    .then(response => response.json())
+    .then(result => {
+        console.log('Confirm response:', result);
+        document.getElementById("result").textContent = result.message || "Confirmed!";
+    })
+    .catch(error => {
+        console.error('Error during confirmation:', error);
+    });
     })
     /*
     const dowloadLink = document.createElement('a');

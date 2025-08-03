@@ -25,6 +25,13 @@ def upload_image():
     filepath = os.path.join(UPLOAD_FOLDER, filename)
     file.save(filepath)
 
+    return jsonify({'message': 'Image uploaded successfully', 'filename': filename})
+    
+
+    
+
+@app.route('/Results')
+def display_food():
     try:
         result = subprocess.run(
             ['python', 'fatsecret.py'],
@@ -33,14 +40,41 @@ def upload_image():
             text=True
         )
         output = result.stdout
+        print(output)
     except subprocess.CalledProcessError as e:
+        print("Error output:", e.stderr)  # Add this line
         return jsonify({'error': 'Notebook'}), 500
 
-    return jsonify({'message': 'Image received', 'filename': filename, 'output': output})
+    with open('output.txt', 'r') as f:
+        content = f.read().strip()
 
-@app.route('/Results')
-def results():
-    return render_template('Results.html')
+    entries = content.split('--------------------------')
+
+    food_name = calories = fat = carbs = protein = None
+
+    for entry in entries:
+        lines = entry.strip().split('\n')
+        if len(lines) < 5:
+            continue
+
+        food_name = lines[0].replace('Food: ', '').strip()
+        calories = lines[1].replace('Calories: ', '').replace(' kcal', '').strip()
+        fat = lines[2].replace('Fat: ', '').replace(' g', '').strip()
+        carbs = lines[3].replace('Carbs: ', '').replace(' g', '').strip()
+        protein = lines[4].replace('Protein: ', '').replace(' g', '').strip()
+
+        print (food_name)
+        print (calories)
+        print (fat)
+        print (carbs)
+        print (protein)
+
+    return render_template('Results.html', 
+                           food_name=food_name, 
+                           calories=calories, 
+                           fat=fat, 
+                           carbs=carbs, 
+                           protein=protein)
 
 if __name__ == '__main__':
     app.run(debug=True)
