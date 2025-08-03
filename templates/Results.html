@@ -7,15 +7,12 @@
 </head>
 <body>
 <div>
-    <img src="{{ url_for('static', filename='uploads/garliccloveoncounter13_jpeg_jpg.rf.37c4b653f4d37042979110a5326f8827.jpg') }}">
-    {% for item in data %}
-    <h1>Name: {{ item.name }}</h1>
-    <h1>Calories: {{ item.calories }}</h1>
-    <h1>Fat: {{ item.fat }}</h1>
-    <h1>Carbs: {{ item.carbs }}</h1>
-    <h1>Protein: {{ item.protein }}</h1>
-    <hr>
-    {% endfor %}
+    <!-- <img src="{{ url_for('static', filename='uploads/garliccloveoncounter13_jpeg_jpg.rf.37c4b653f4d37042979110a5326f8827.jpg') }}">-->
+   <h1>Food iteam: {{ food_name }}</h1>
+    <h1>Calories in food: {{ calories }}</h1>
+    <!--<h1>{{ fat }}</h1>-->
+    <h1>Carbs in the food: {{ carbs }}</h1>
+    <h1>Protein in the food: {{ protein }}</h1>
 </div>
 </body>
 </html>

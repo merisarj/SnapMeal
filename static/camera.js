@@ -61,7 +61,3 @@ document.addEventListener("DOMContentLoaded", () => {
     dowloadLink.click();
      */
 })
-
-
-
-

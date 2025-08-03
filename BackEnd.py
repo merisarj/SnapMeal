@@ -35,7 +35,6 @@ def display_food():
         content = f.read().strip()
 
     entries = content.split('--------------------------')
-    data = []
 
     for entry in entries:
         lines = entry.strip().split('\n')
@@ -48,22 +47,17 @@ def display_food():
         carbs = lines[3].replace('Carbs: ', '').replace(' g', '').strip()
         protein = lines[4].replace('Protein: ', '').replace(' g', '').strip()
 
-        data.append({
-            'name': food_name,
-            'calories': calories,
-            'fat': fat,
-            'carbs': carbs,
-            'protein': protein
-        })
+        print (food_name)
+        print (calories)
+        print (fat)
+        print (carbs)
+        print (protein)
     
-    return render_template('Results.html', data=data)
-
-@app.route('/test')
-def test():
-    food = [
-        {'name': 'Garlic', 'calories': 149, 'fat': 0.5, 'carbs': 33.06, 'protein': 6.36},
-        {'name': 'Onion', 'calories': 40, 'fat': 0.1, 'carbs': 9.3, 'protein': 1.1}
-    ]
-    return render_template('Results.html', food=food)
+    return render_template('Results.html', 
+                           food_name=food_name, 
+                           calories=calories, 
+                           fat=fat, 
+                           carbs=carbs, 
+                           protein=protein)
 if __name__ == '__main__':
     app.run(debug=True)
