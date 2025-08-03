@@ -45,13 +45,13 @@ document.addEventListener("DOMContentLoaded", () => {
             body: formData
         })
             .then(response => response.json())
-            .then(result => {
-                console.log('AI API Response:', result);
+            .then(result => {                console.log('AI API Response:', result);
                 document.getElementById("result").textContent = result.output || JSON.stringify(result);
             })
             .catch(error => {
                 console.error('Error sending image to AI API', error);
             })
+
     })
     /*
     const dowloadLink = document.createElement('a');
