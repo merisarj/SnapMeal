@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="{{ url_for('static', filename='camera.js') }}"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webcam Demo</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<h1>Access Camera and Capture Photo</h1>
+<div class="camera-wrapper">
+<video id="camera" autoplay></video>
+<canvas id="photo"></canvas>
+
+</div>
+<div class="controls">
+<button id="capture-btn">Capture Photo</button>
+    <button id="confirm-btn" onclick="window.location.href='/Results'">Confirm photo</button>
+</div>
+
+</body>
+</html>
