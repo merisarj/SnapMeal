@@ -15,8 +15,12 @@ CLIENT = InferenceHTTPClient(
 custom_config = InferenceConfiguration(confidence_threshold=0.01, iou_threshold=0.3)
 
 with CLIENT.use_configuration(custom_config):
+    print("Opening image")
     your_image = Image.open("static/uploads/captured-image.jpg")
+    print("Image opened")
+    print("Running RoboFlow inference")
     result = CLIENT.infer(your_image, model_id="food-bxkvw/3")
+    print("Inference result:", result)
 
 labels = [prediction["class"] for prediction in result["predictions"]]
 
@@ -26,8 +30,8 @@ labels = [prediction["class"] for prediction in result["predictions"]]
 import requests
 from requests.auth import HTTPBasicAuth
 
-CLIENT_ID = 'e6ce66a8cc7f4887a208bc5f2f71dfc3'
-CLIENT_SECRET = '97805a872c5a496ababe2489cb24d7d0'
+CLIENT_ID = '8981259bb62345b88971eacfd43656b9'
+CLIENT_SECRET = '379ce6ea42d8452dbfc64013fbbee227'
 TOKEN_URL = 'https://oauth.fatsecret.com/connect/token'
 
 response = requests.post(
@@ -58,9 +62,11 @@ params = {
     'format': 'json',
     'search_expression': search_term
 }
+print(search_term)
 
 response = requests.get(SEARCH_URL, headers=headers, params=params)
 data = response.json()
+print(data)
 
 
 # In[19]:
@@ -83,7 +89,10 @@ pattern = re.compile(rf'\b({re.escape(base_term)}|{re.escape(alt_term)})\b', re.
 
 foods = data.get('foods', {}).get('food', [])
 
+print(foods)
+
 for food in foods:
+    print("food loop entered")
     name = food.get('food_name', 'Unknown')
 
     # Match either form
@@ -106,6 +115,7 @@ for food in foods:
         'carbs': float(carbs.group(1)) if carbs else None,
         'protein': float(protein.group(1)) if protein else None
     }
+    print("result created")
 
     # Format result as a text block
     text_entry = (
@@ -117,12 +127,11 @@ for food in foods:
         "--------------------------\n"
     )
 
+    print(text_entry)
+
     # Append to the text file
     with open('output.txt', 'w') as f:
         f.write(text_entry)
-
-    # Optional: print output
-    print(text_entry)
 
     break  # Remove this if you want to save multiple matches
 

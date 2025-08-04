@@ -1,6 +1,6 @@
-Food: Bananas
-  Calories: 89.0 kcal
-  Fat: 0.33 g
-  Carbs: 22.84 g
-  Protein: 1.09 g
+Food: White Rice
+  Calories: 206.0 kcal
+  Fat: 0.45 g
+  Carbs: 44.5 g
+  Protein: 4.24 g
 --------------------------

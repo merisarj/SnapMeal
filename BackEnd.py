@@ -30,7 +30,7 @@ def upload_image():
 
     
 
-@app.route('/Results')
+@app.route('/Results', methods=['GET', 'POST'])
 def display_food():
     try:
         result = subprocess.run(
