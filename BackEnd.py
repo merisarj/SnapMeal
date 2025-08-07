@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, jsonify
 from werkzeug.utils import secure_filename
 import os
 import subprocess
+import fatsecret
 
 app = Flask(__name__)
 
@@ -32,6 +33,7 @@ def upload_image():
 
 @app.route('/Results', methods=['GET', 'POST'])
 def display_food():
+    
     try:
         result = subprocess.run(
             ['python', 'fatsecret.py'],

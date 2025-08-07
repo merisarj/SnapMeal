@@ -43,7 +43,7 @@ response = requests.post(
 response.raise_for_status()
 access_token = response.json().get('access_token')
 
-print("Access Token:", access_token)
+print("1 Token:", access_token)
 
 
 # In[18]:

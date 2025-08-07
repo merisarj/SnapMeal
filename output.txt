@@ -1,6 +1,6 @@
-Food: White Rice
-  Calories: 206.0 kcal
-  Fat: 0.45 g
-  Carbs: 44.5 g
-  Protein: 4.24 g
+Food: Assorted Fingerling Potato Bag
+  Calories: 110.0 kcal
+  Fat: 0.0 g
+  Carbs: 26.0 g
+  Protein: 3.0 g
 --------------------------
